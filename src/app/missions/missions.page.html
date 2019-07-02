@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Mission</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <app-skeleton *ngIf="!missions"></app-skeleton>
+
+    <div [@fadeIn] *ngIf="missions">
+      <ion-list >
+        <ion-item-sliding *ngFor="let m of missions" (click)="getOneMission(m)">
+          <ion-item-options side="start">
+            <ion-item-option>Favorite</ion-item-option>
+          </ion-item-options>
+          <ion-item>
+            <ion-label class="d-inline">
+              <h2>{{m.mission_name}}</h2>
+              <p>{{m.description}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </ion-content>

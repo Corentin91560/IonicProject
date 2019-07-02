@@ -1,0 +1,7 @@
+{
+  "name": "spacex-app-demo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
